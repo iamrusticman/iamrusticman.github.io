@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/dmc.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/dmc.js"></script>
+    </head>    
+    <body>
+        <div class="mainContainer">
+            <div class="mainTitle">
+                <h1>Dance Music Chart</h1>
+            </div>
+            <div class="mainDescription">
+                <h2>Week 27/05/2017 - 02/06/2017</h2>
+            </div>
+            <div class="menu">
+                <a class="menuOption" href="javascript:startChartTour()">Start Chart Tour</a>
+                <a class="menuOption" href="javascript:unveilFullChart()">Unveil Full Chart</a>
+            </div>
+            <div class="mainContent">
+                <div class="chartContainer">
+                    <div class="chartHeader">
+                        <div class="columnHeader positionHeader">Number</div>
+                        <div class="columnHeader coverHeader">&nbsp;</div>
+                        <div class="columnHeader artistTitleHeader">Artist / Title</div>
+                        <div class="columnHeader lastHeader">Last</div>
+                        <div class="columnHeader peakHeader">Peak</div>
+                        <div class="columnHeader weeksHeader">Wks</div>
+                    </div>
+                    <div class="chartContent">
+                        <div class="track" data-videourl="https://www.youtube.com/embed/aatr_2MstrI?start=150&autoplay=1">
+                            <div class="trackCell trackPosition">1</div>
+                            <div class="trackCell trackCover"><img class="trackCoverImage" src="https://images.genius.com/6ac6f9fc92927aa9d53f23a90bf1cd09.1000x1000x1.jpg"></div>
+                            <div class="trackCell trackArtistTitle">
+                                <div class="trackArtist">Clean Bandit feat. Zara Larsson</div>
+                                <div class="trackTitle">Symphony</div>
+                            </div>
+                            <div class="trackCell trackLast">2</div>
+                            <div class="trackCell trackPeak">1</div>
+                            <div class="trackCell trackWeeks">9</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="playerContainer">
+                    <iframe id="videoPlayer" width="460" height="290" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
