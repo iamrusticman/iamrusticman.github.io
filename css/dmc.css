@@ -24,6 +24,7 @@ body {
 .playerContainer {
     width: 500px;
     float: left;
+    position: relative;
 }
 
 .chartHeader {
@@ -133,4 +134,40 @@ body {
     height: 56px;
     padding-top: 1px;
     padding-left: 1px;
+}
+
+.playerLabel {
+    display: none;
+    position: absolute;
+    top: 250px;
+    left: 0px;
+    z-index: 1000;    
+}
+
+.playerPosition {
+    float: left;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #000;
+}
+
+.playerPosition.down 
+{
+    background-color: #F00
+}
+
+.playerPosition.up 
+{
+    background-color: #0F0
+}
+
+.playerTitleArtist
+{
+    padding-left: 5px;
+    float: left;
+    width: 420px;
+    height: 40px;
+    color: #000;
+    background-color: #FFF;
 }
