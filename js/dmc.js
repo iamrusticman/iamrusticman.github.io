@@ -19,6 +19,7 @@ function playTrack(index)
 function clearPlayer()
 {
     $("#videoPlayer").hide();
+    $(".playerLabel").hide();
     videoPlayer = $("#videoPlayer")[0];
     videoPlayer["src"] = "about:blank";
 }
@@ -26,6 +27,7 @@ function clearPlayer()
 function initPlayer(index)
 {
     track = window.tracks[index];
+    $(track).addClass("current");
     
     trackPosition = $(track).find(".trackPosition");
     number = trackPosition.text();
@@ -48,14 +50,35 @@ function initPlayer(index)
         setTimeout(function() {
             $("#videoPlayer").show();
 
-            if (index >= 0) 
+            if (index < window.tracks.length) 
             {
-                setTimeout(function(){ playTrack(index + 1); }, videoDuration * 1000);
+                setTimeout(function() { 
+                    $(track).removeClass("current"); 
+                    playTrack(index + 1); 
+                }, videoDuration * 1000);
             }
         }, 1500);
 
         setTimeout(function() {
-            $(".playerLabel").show(500);
+            showTrackLabel(index);
         }, 3000);
     }
+}
+
+function showTrackLabel(index)
+{
+    trackPosition = $(track).find(".trackPosition");
+    trackPosition.removeClass("off").addClass("on");
+    trackArtistTitle = $(track).find(".trackArtistTitle");
+    trackArtistTitle.removeClass("off").addClass("on");
+    trackCover = $(track).find(".trackCover");
+    trackCover.removeClass("off").addClass("on");
+    trackPeak = $(track).find(".trackPeak");
+    trackPeak.removeClass("off").addClass("on");
+    trackLast = $(track).find(".trackLast");
+    trackLast.removeClass("off").addClass("on");
+    trackWeeks = $(track).find(".trackWeeks");
+    trackWeeks.removeClass("off").addClass("on");
+    
+    $(".playerLabel").show(500);
 }
