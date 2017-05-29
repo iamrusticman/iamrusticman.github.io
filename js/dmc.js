@@ -18,9 +18,9 @@ function playTrack(index)
 
 function clearPlayer()
 {
-    videoPlayer = $("#videoPlayer")[0];
-    videoPlayer["src"] = "#";
     $("#videoPlayer").hide();
+    videoPlayer = $("#videoPlayer")[0];
+    videoPlayer["src"] = "about:blank";
 }
 
 function initPlayer(index)
@@ -45,12 +45,14 @@ function initPlayer(index)
 
     videoPlayer.onload = function() 
     {
-        $("#videoPlayer").show();
-        $(".playerLabel").show(500);
+        setTimeout(function() {
+            $("#videoPlayer").show();
+            $(".playerLabel").show(500);
 
-        if (index >= 0) 
-        {
-            setTimeout(function(){ playTrack(index + 1); }, videoDuration * 1000);
-        }
+            if (index >= 0) 
+            {
+                setTimeout(function(){ playTrack(index + 1); }, videoDuration * 1000);
+            }
+        }, 1500);
     }
 }
