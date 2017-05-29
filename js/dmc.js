@@ -47,12 +47,15 @@ function initPlayer(index)
     {
         setTimeout(function() {
             $("#videoPlayer").show();
-            $(".playerLabel").show(500);
 
             if (index >= 0) 
             {
                 setTimeout(function(){ playTrack(index + 1); }, videoDuration * 1000);
             }
         }, 1500);
+
+        setTimeout(function() {
+            $(".playerLabel").show(500);
+        }, 3000);
     }
 }
