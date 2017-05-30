@@ -1,12 +1,16 @@
 body {
     background-color: #000;
-    width: 100%;
     font-family: 'Exo';
 }
 
 .mainContainer {
-    margin: auto;
     width: 1200px;
+    margin: auto;
+}
+
+.footer {
+    width: 50px;
+    min-height: 50px;
 }
 
 .mainTitle {
@@ -30,9 +34,11 @@ body {
 }
 
 .playerContainer {
-    width: 500px;
+    width: 466px;
     float: left;
     position: relative;
+    max-height: 500px;
+    border: 1px solid #333;
 }
 
 .chartHeader {
@@ -109,8 +115,9 @@ body {
     color: #BBB;
 }
 
-.track.current .trackPosition {
+.track.current div[data-direction="down"].trackPosition {
     background-color: #333;
+    color: #AAA;
 
     -webkit-animation: blink 1s infinite; /* Safari 4+ */
     -moz-animation:    blink 1s infinite; /* Fx 5+ */
@@ -121,24 +128,56 @@ body {
     @-webkit-keyframes blink {
     0%, 49% {
         background-color: #333;
+        color: #AAA;
     }
     50%, 100% {
-        background-color: #000;
+        background-color: #D15961;
+        color: #555;
+    }
+}
+
+.track.current div[data-direction="up"].trackPosition {
+    background-color: #333;
+    color: #AAA;
+
+    -webkit-animation: blink 1s infinite; /* Safari 4+ */
+    -moz-animation:    blink 1s infinite; /* Fx 5+ */
+    -o-animation:      blink 1s infinite; /* Opera 12+ */
+    animation:         blink 1s infinite; /* IE 10+, Fx 29+ */
+    }
+
+    @-webkit-keyframes blink {
+    0%, 49% {
+        background-color: #333;
+        color: #AAA;
+    }
+    50%, 100% {
+        background-color: #65C485;
+        color: #555;
     }
 }
 
 .trackCell.trackPosition.off {
-    color: #333;
+    color: #555;
 }
 
 .trackCell.trackPosition.on {
-    color: #FFF;
+    color: #333;
+    background-color: #BBB;
 }
 
 .trackPosition {
     width: 60px;
     line-height: 60px;
     text-align: center;
+}
+
+div[data-direction="down"].trackCell.trackPosition.on {
+    background-color: #D15961
+}
+
+div[data-direction="up"].trackCell.trackPosition.on {
+    background-color: #65C485
 }
 
 .trackCover {
@@ -214,18 +253,15 @@ body {
     color: #000;
 }
 
-.playerPosition.down 
-{
+.playerPosition.down {
     background-color: #D15961
 }
 
-.playerPosition.up 
-{
+.playerPosition.up {
     background-color: #65C485
 }
 
-.playerTitleArtist
-{
+.playerTitleArtist {
     padding-left: 5px;
     float: left;
     width: 420px;
@@ -234,7 +270,37 @@ body {
     background-color: #BBB;
 }
 
-.playerTitle 
-{
+.playerTitle {
     font-size: 14px;
+}
+
+#videoPlayer2 {
+    display: none;
+    margin-left: 3px;
+}
+
+#videoPlayer1 {
+    display: block;
+    margin-left: 3px;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
 }
