@@ -122,13 +122,13 @@ body {
     background-color: #333;
     color: #AAA;
 
-    -webkit-animation: blink 1s infinite; /* Safari 4+ */
-    -moz-animation:    blink 1s infinite; /* Fx 5+ */
-    -o-animation:      blink 1s infinite; /* Opera 12+ */
-    animation:         blink 1s infinite; /* IE 10+, Fx 29+ */
+    -webkit-animation: blinkd 1s infinite; /* Safari 4+ */
+    -moz-animation:    blinkd 1s infinite; /* Fx 5+ */
+    -o-animation:      blinkd 1s infinite; /* Opera 12+ */
+    animation:         blinkd 1s infinite; /* IE 10+, Fx 29+ */
     }
 
-    @-webkit-keyframes blink {
+    @-webkit-keyframes blinkd {
     0%, 49% {
         background-color: #333;
         color: #AAA;
@@ -139,7 +139,49 @@ body {
     }
 }
 
+.track.current div.trackCell.trackPosition.eq {
+    background-color: #333;
+    color: #AAA;
+
+    -webkit-animation: blinke 1s infinite; /* Safari 4+ */
+    -moz-animation:    blinke 1s infinite; /* Fx 5+ */
+    -o-animation:      blinke 1s infinite; /* Opera 12+ */
+    animation:         blinke 1s infinite; /* IE 10+, Fx 29+ */
+    }
+
+    @-webkit-keyframes blinke {
+    0%, 49% {
+        background-color: #333;
+        color: #AAA;
+    }
+    50%, 100% {
+        background-color: #ffdb4d;
+        color: #555;
+    }
+}
+
 .track.current div.trackCell.trackPosition.up {
+    background-color: #333;
+    color: #AAA;
+
+    -webkit-animation: blinku 1s infinite; /* Safari 4+ */
+    -moz-animation:    blinku 1s infinite; /* Fx 5+ */
+    -o-animation:      blinku 1s infinite; /* Opera 12+ */
+    animation:         blinku 1s infinite; /* IE 10+, Fx 29+ */
+    }
+
+    @-webkit-keyframes blinku {
+    0%, 49% {
+        background-color: #333;
+        color: #AAA;
+    }
+    50%, 100% {
+        background-color: #65C485;
+        color: #555;
+    }
+}
+
+.track.current div.trackCell.trackPosition.entry {
     background-color: #333;
     color: #AAA;
 
@@ -155,7 +197,7 @@ body {
         color: #AAA;
     }
     50%, 100% {
-        background-color: #65C485;
+        background-color: #4db8ff;
         color: #555;
     }
 }
@@ -173,6 +215,7 @@ body {
     width: 60px;
     line-height: 60px;
     text-align: center;
+    font-size: 26px;
 }
 
 div.trackCell.trackPosition.on.down {
@@ -181,6 +224,14 @@ div.trackCell.trackPosition.on.down {
 
 div.trackCell.trackPosition.on.up {
     background-color: #65C485
+}
+
+div.trackCell.trackPosition.on.eq {
+    background-color: #ffdb4d
+}
+
+div.trackCell.trackPosition.on.entry {
+    background-color: #4db8ff
 }
 
 .trackCover {
@@ -254,6 +305,7 @@ div.trackCell.trackPosition.on.up {
     line-height: 40px;
     text-align: center;
     color: #000;
+    font-size: 24px;
 }
 
 .playerPosition.down {
@@ -262,6 +314,14 @@ div.trackCell.trackPosition.on.up {
 
 .playerPosition.up {
     background-color: #65C485
+}
+
+.playerPosition.eq {
+    background-color: #ffdb4d
+}
+
+.playerPosition.entry {
+    background-color: #4db8ff
 }
 
 .playerTitleArtist {

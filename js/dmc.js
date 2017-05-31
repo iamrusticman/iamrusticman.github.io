@@ -56,8 +56,11 @@ function loadTrack(index)
     
     var trackPosition = $(track).find(".trackPosition");
     var number = trackPosition.text();
-    var direction = hasClass(trackPosition[0], "up") ? "up" : "down";
-    $(".playerPosition").text(number).removeClass("up").removeClass("down").addClass(direction);
+    var direction = hasClass(trackPosition[0], "up") ? "up" 
+                    : (hasClass(trackPosition[0], "down") ? "down"
+                    : (hasClass(trackPosition[0], "eq") ? "eq"
+                    : "entry"));
+    $(".playerPosition").text(number).removeClass("up").removeClass("down").removeClass("eq").removeClass("entry").addClass(direction);
 
     var artist = $(track).find(".trackArtist").text();
     $(".playerArtist").text(artist);
@@ -85,7 +88,6 @@ function loadTrack(index)
             
             var afterPlayHandler = registerEvent();
             setTimeout(function() { 
-                console.log("after play")
                 if (!isActiveEvent(afterPlayHandler)) return;
 
                 clearCurrentTrack();
@@ -119,7 +121,7 @@ function showTrackLabel(track)
     var trackWeeks = $(track).find(".trackWeeks");
     trackWeeks.removeClass("off").addClass("on");
     
-    $(".playerLabel").show(500);
+    $(".playerLabel").show();
 }
 
 function goToPreviousTrack()
@@ -196,7 +198,6 @@ function initializeEvents()
 function registerEvent()
 {
     window.currentEvents.push(window.eventSeed);
-    console.log("Adding event " + window.eventSeed);
     var handler = window.eventSeed;
     window.eventSeed = window.eventSeed + 1;    
     return handler;
@@ -209,7 +210,6 @@ function cancelAllEvents()
 
 function isActiveEvent(handler)
 {
-    console.log("Checking event " + handler + " -> " + (window.currentEvents.indexOf(handler) !== -1));
     return window.currentEvents.indexOf(handler) !== -1;
 }
 
