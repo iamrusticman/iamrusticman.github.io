@@ -8,24 +8,68 @@ body {
     margin: auto;
 }
 
+.header {
+    width: 100%;
+}
+
 .footer {
-    width: 50px;
+    width: 1200px;
     min-height: 50px;
+    margin: auto;
+}
+
+.mainTitleSection {
+    float: left;
 }
 
 .mainTitle {
-    color: #999;
+    float: left;
+    color: #6893d8;
     font-size: 26px;
 }
 
+.mainTitle h1 {
+    line-height: 30px;
+}
+
 .mainDescription {
-    color: #666;
-    font-size: 16px;
+    float: left;
+    font-size: 14px;
+    color: #777;
+    margin-top: 30px;
+    margin-left: 22px;
+}
+
+.mainBody {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 20px; 
+}
+
+.mainDescription .highlight {
+    color: #6893d8;
+}
+
+.weekDescription {
+    margin-top: 52px;
+    margin-right: 35px;
+    color: #999;
+    font-size: 14px;
+    float: right;
 }
 
 .menuOption {
     color: #6FA4E1;
     margin-right: 20px;
+}
+
+.menuOption.playChart {
+    font-size: 20px;
+}
+
+.menuOption.showChart {
+    font-size: 14px;
+    color: #999;
 }
 
 .chartContainer {
@@ -42,6 +86,7 @@ body {
     background-repeat: no-repeat;
     background-position: center; 
     background-size: 80px 80px;
+    margin-top: 62px;
 }
 
 .chartHeader {
@@ -68,8 +113,12 @@ body {
 }
 
 .artistTitleHeader {
-    width: 420px;
+    width: 380px;
     padding-left: 5px;
+}
+
+.optionsHeader {
+    width: 40px;
 }
 
 .lastHeader {
@@ -243,8 +292,12 @@ div.trackCell.trackPosition.on.entry {
 .trackArtistTitle {
     padding-left: 5px;
     line-height: 60px;
-    width: 420px;
+    width: 380px;
     height: 60px;
+}
+
+.trackCell.trackArtistTitle {
+    border-right: none;
 }
 
 .trackArtist {
@@ -254,6 +307,29 @@ div.trackCell.trackPosition.on.entry {
 .trackTitle {
     line-height: 30px;
     font-size: 14px;
+}
+
+.trackOptions {
+    width: 40px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.trackCell.trackOptions {
+    border-left: none;
+}
+
+.trackOptions.on a {
+    color: #DDD;
+    font-size: 24px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.trackOptions.off a {
+    color: #000;
+    font-size: 24px;
+    text-decoration: none;
 }
 
 .trackLast {
@@ -383,4 +459,14 @@ html[xmlns] .clearfix {
 .playerControls div {
     width: 50px;
     float: left;
+}
+
+.contactUs {
+    color: #777;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.contactMail {
+    color: #6FA4E1;
 }

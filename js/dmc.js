@@ -6,22 +6,37 @@ $(document).ready(function()
     initializeEvents();
 });
 
-function startChartTour()
+function showFullChart()
 {
+    $(".trackPosition").removeClass("off").addClass("on");
+    $(".trackArtistTitle").removeClass("off").addClass("on");
+    $(".trackCover").removeClass("off").addClass("on");
+    $(".trackOptions").removeClass("off").addClass("on");
+    $(".trackPeak").removeClass("off").addClass("on");
+    $(".trackLast").removeClass("off").addClass("on");
+    $(".trackWeeks").removeClass("off").addClass("on");
+}
+
+function playThatChart()
+{
+    cancelAllEvents();
+    clearCurrentTrack();
+    clearPlayerLabel();
+    pauseCurrentPlayer();
     window.scrollTo(0,document.body.scrollHeight);
     playTrack(0);
 }
 
-function playTrack(index)
+function playTrack(index, full = false)
 {
     window.currentVideoIndex = index;
     scrollPage(index);
-    setTimeout(loadTrack(index), 0);
+    setTimeout(loadTrack(index, full), 0);
 }
 
 function scrollPage(index)
 {
-    window.scrollTo(0,document.body.scrollHeight - 50 - 60 * (index + 1));
+    window.scrollTo(0,document.body.scrollHeight - 180 - 60 * (index + 1));
 }
 
 function clearPlayerLabel()
@@ -31,15 +46,6 @@ function clearPlayerLabel()
 
 function displayPlayer(index)
 {
-    var playerHeight = ((window.tracks.length - index) * 60) + 25;
-    var playerContainer = $(".playerContainer")[0];
-    playerContainer.style["margin-top"] = playerHeight;
-    if (document.body.scrollHeight < playerHeight + 300) {
-        window.scrollTo(0,document.body.scrollHeight);
-    }
-    else {
-        window.scrollTo(0,document.body.scrollHeight - 50 - 60 * (index + 1));
-    }
     $("#videoPlayer" + window.currentVideoPlayer).show().css('visibility', 'visible');
     window.currentVideoPlayer = window.currentVideoPlayer === 1 ? 2 : 1;
     $("#videoPlayer" + window.currentVideoPlayer).hide();
@@ -49,10 +55,25 @@ function displayPlayer(index)
     setPlayerLoaded();
 }
 
-function loadTrack(index)
+function scrollPlayer(index)
+{
+    var playerHeight = ((window.tracks.length - index) * 60) + 25;
+    var playerContainer = $(".playerContainer")[0];
+    playerContainer.style["margin-top"] = playerHeight;
+    if (document.body.scrollHeight < playerHeight + 300) {
+        window.scrollTo(0,document.body.scrollHeight);
+    }
+    else {
+        scrollPage(index);
+    }
+}
+
+function loadTrack(index, full = false)
 {
     var track = window.tracks[index];
     $(track).addClass("current");
+
+    scrollPlayer(index);
     
     var trackPosition = $(track).find(".trackPosition");
     var number = trackPosition.text();
@@ -71,7 +92,7 @@ function loadTrack(index)
     var videoDuration = parseInt(track.getAttribute("data-videoduration"));
     videoDuration = videoDuration === NaN ? 18 : videoDuration;
     var videoPlayer = $("#videoPlayer" + currentVideoPlayer)[0];
-    videoPlayer["src"] = videoUrl;
+    videoPlayer["src"] = processVideoUrl(videoUrl, full);
     clearPlayerLabel();
 
     var onLoadHandler = registerEvent();
@@ -85,7 +106,8 @@ function loadTrack(index)
             if (!isActiveEvent(initHandler)) return;
 
             displayPlayer(index);
-            
+
+            if (full) return;            
             var afterPlayHandler = registerEvent();
             setTimeout(function() { 
                 if (!isActiveEvent(afterPlayHandler)) return;
@@ -120,8 +142,22 @@ function showTrackLabel(track)
     trackLast.removeClass("off").addClass("on");
     var trackWeeks = $(track).find(".trackWeeks");
     trackWeeks.removeClass("off").addClass("on");
-    
+    var trackOptions = $(track).find(".trackOptions");
+    trackOptions.removeClass("off").addClass("on");
+
     $(".playerLabel").show();
+}
+
+function playTrackFromLink(linkElement)
+{
+    cancelAllEvents();
+    clearCurrentTrack();
+    clearPlayerLabel();
+    pauseCurrentPlayer();
+    setPlayerLoading();
+    var track = linkElement.parentElement.parentElement;
+    var index = window.tracks.indexOf(track);
+    playTrack(index, true);
 }
 
 function goToPreviousTrack()
@@ -213,6 +249,13 @@ function isActiveEvent(handler)
     return window.currentEvents.indexOf(handler) !== -1;
 }
 
-function hasClass(element, cls) {
+function hasClass(element, cls) 
+{
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
+function processVideoUrl(url, full = false)
+{
+    if (!full) return url;
+    return url.substring(0, url.indexOf('?')) + '?autoplay=1';
 }
