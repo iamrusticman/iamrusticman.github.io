@@ -170,6 +170,10 @@ body {
 .track.current div.trackCell.trackPosition.down {
     background-color: #333;
     color: #AAA;
+    background-image: url('../images/down.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
 
     -webkit-animation: blinkd 1s infinite; /* Safari 4+ */
     -moz-animation:    blinkd 1s infinite; /* Fx 5+ */
@@ -191,6 +195,10 @@ body {
 .track.current div.trackCell.trackPosition.eq {
     background-color: #333;
     color: #AAA;
+    background-image: url('../images/eq.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
 
     -webkit-animation: blinke 1s infinite; /* Safari 4+ */
     -moz-animation:    blinke 1s infinite; /* Fx 5+ */
@@ -212,6 +220,10 @@ body {
 .track.current div.trackCell.trackPosition.up {
     background-color: #333;
     color: #AAA;
+    background-image: url('../images/up.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
 
     -webkit-animation: blinku 1s infinite; /* Safari 4+ */
     -moz-animation:    blinku 1s infinite; /* Fx 5+ */
@@ -233,6 +245,10 @@ body {
 .track.current div.trackCell.trackPosition.entry {
     background-color: #333;
     color: #AAA;
+    background-image: url('../images/entry.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
 
     -webkit-animation: blinko 1s infinite; /* Safari 4+ */
     -moz-animation:    blinko 1s infinite; /* Fx 5+ */
@@ -268,19 +284,35 @@ body {
 }
 
 div.trackCell.trackPosition.on.down {
-    background-color: #D15961
+    background-color: #D15961;
+    background-image: url('../images/down.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
 }
 
 div.trackCell.trackPosition.on.up {
-    background-color: #65C485
+    background-color: #65C485;
+    background-image: url('../images/up.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
 }
 
 div.trackCell.trackPosition.on.eq {
-    background-color: #ffdb4d
+    background-color: #ffdb4d;
+    background-image: url('../images/eq.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
 }
 
 div.trackCell.trackPosition.on.entry {
-    background-color: #4db8ff
+    background-color: #4db8ff;
+    background-image: url('../images/entry.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
 }
 
 .trackCover {
@@ -385,19 +417,35 @@ div.trackCell.trackPosition.on.entry {
 }
 
 .playerPosition.down {
-    background-color: #D15961
+    background-color: #D15961;
+    background-image: url('../images/down.png');
+    background-repeat: no-repeat;
+    background-position: 16px 31px;
+    background-size: 8px 8px;
 }
 
 .playerPosition.up {
-    background-color: #65C485
+    background-color: #65C485;
+    background-image: url('../images/up.png');
+    background-repeat: no-repeat;
+    background-position: 16px 31px;
+    background-size: 8px 8px;
 }
 
 .playerPosition.eq {
-    background-color: #ffdb4d
+    background-color: #ffdb4d;
+    background-image: url('../images/eq.png');
+    background-repeat: no-repeat;
+    background-position: 16px 31px;
+    background-size: 8px 8px;
 }
 
 .playerPosition.entry {
-    background-color: #4db8ff
+    background-color: #4db8ff;
+    background-image: url('../images/entry.png');
+    background-repeat: no-repeat;
+    background-position: 16px 31px;
+    background-size: 8px 8px;
 }
 
 .playerTitleArtist {
