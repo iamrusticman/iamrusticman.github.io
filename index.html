@@ -3,7 +3,24 @@
         <link rel="stylesheet" type="text/css" href="css/dmc.css">
         <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet'>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/dmc.js"></script>
+        <script id="tracks-template" type="text/x-handlebars-template">
+            {{#each tracks}}
+                <div class="track" data-videourl="{{videoUrl}}" data-videoduration="{{videoDuration}}">
+                    <div class="trackCell trackPosition off {{direction}}">{{position}}</div>
+                    <div class="trackCell trackCover off"><img class="trackCoverImage" src="{{coverImage}}"></div>
+                    <div class="trackCell trackArtistTitle off">
+                        <div class="trackArtist">{{artist}}</div>
+                        <div class="trackTitle">{{title}}</div>
+                    </div>
+                    <div class="trackCell trackOptions off"><a onclick="playTrackFromLink(this)">></a></div>
+                    <div class="trackCell trackLast off">{{last}}</div>
+                    <div class="trackCell trackPeak off">{{peak}}</div>
+                    <div class="trackCell trackWeeks off">{{weeks}}</div>
+                </div>
+            {{/each}}
+        </script>
     </head>    
     <body>
         <div class="mainContainer">

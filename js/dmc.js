@@ -1,10 +1,31 @@
 $(document).ready(function()
 {
+    renderTracks();
     window.tracks = $(".track").toArray().reverse();
     window.currentVideoPlayer = 1;
     window.currentVideoIndex = 0;
     initializeEvents();
 });
+
+function renderTracks()
+{
+    var source = $("#tracks-template").html();
+    var template = Handlebars.compile(source);
+    $.ajax({
+        url: "../data/2017-06-03.json",
+        dataType: "json",
+        success: function(response) {
+            //var tracks = { tracks: [
+            //    { position: 1, direction: 'up', artist: 'Clean Bandit feat. Zara Larsson', title: 'Symphony', last: 2, peak: 1, weeks: 8, coverImage: 'https://images.genius.com/6ac6f9fc92927aa9d53f23a90bf1cd09.1000x1000x1.jpg', videoUrl: 'https://www.youtube.com/embed/aatr_2MstrI?start=151&autoplay=1', videoDuration: 18}
+            //]};
+            var html = template({ tracks: response });
+            $(".chartContent").html(html);
+        },
+        error: function(request, error) {
+
+        }
+    });
+}
 
 function showFullChart()
 {
