@@ -1,12 +1,6 @@
 $(document).ready(function()
 {
     renderTracks();
-    setTimeout(function() {
-        window.tracks = $(".track").toArray().reverse();
-        window.currentVideoPlayer = 1;
-        window.currentVideoIndex = 0;
-        initializeEvents();
-    }, 0);
 });
 
 function renderTracks()
@@ -19,6 +13,12 @@ function renderTracks()
         success: function(response) {
             var html = template({ tracks: response });
             $(".chartContent").html(html);
+            setTimeout(function() {
+                window.tracks = $(".track").toArray().reverse();
+                window.currentVideoPlayer = 1;
+                window.currentVideoIndex = 0;
+                initializeEvents();
+            }, 0);
         },
         error: function(request, error) {
             console.log(error);
