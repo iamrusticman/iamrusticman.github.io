@@ -11,5 +11,44 @@
     "videoUrl": "https://youtu.be/Ir4ZqsfGE78?t=113",
     "videoDuration": 18,
     "": ""
+  },
+  {
+    "position": 2,
+    "direction": "down",
+    "artist": "Clean Bandit feat. Zara Larsson",
+    "title": "Symphony",
+    "last": 1,
+    "peak": 1,
+    "weeks": 8,
+    "coverImage": "https://images.genius.com/6ac6f9fc92927aa9d53f23a90bf1cd09.1000x1000x1.jpg",
+    "videoUrl": "aatr_2MstrI?t=151",
+    "videoDuration": 18,
+    "": ""
+  },
+  {
+    "position": 3,
+    "direction": "up",
+    "artist": "Yellow Claw feat. DJ Snake & Elliphant",
+    "title": "Good Day",
+    "last": 5,
+    "peak": 3,
+    "weeks": 7,
+    "coverImage": "http://s.mxmcdn.net/images-storage/albums4/7/0/5/6/1/8/36816507_800_800.jpg",
+    "videoUrl": "RyMqplmQ_fE?t=65",
+    "videoDuration": 18,
+    "": ""
+  },
+  {
+    "position": 4,
+    "direction": "eq",
+    "artist": "Afrojack & David Guetta feat. Ester Dean",
+    "title": "Another Life",
+    "last": 4,
+    "peak": 4,
+    "weeks": 9,
+    "coverImage": "https://images.genius.com/4182d3a7a990d558f5eceb774e236a8e.696x696x1.jpg",
+    "videoUrl": "ivxPepDyqmI?t=59",
+    "videoDuration": 18,
+    "": ""
   }
 ]

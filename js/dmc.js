@@ -1,23 +1,24 @@
 $(document).ready(function()
 {
     renderTracks();
+    window.currentVideoPlayer = 1;
+    window.currentVideoIndex = 0;
+    initializeEvents();
 });
 
 function renderTracks()
 {
     var source = $("#tracks-template").html();
     var template = Handlebars.compile(source);
+    var dataUrl = getDataUrl();
     $.ajax({
-        url: "../data/2017-06-03.json",
+        url: dataUrl,
         dataType: "json",
         success: function(response) {
             var html = template({ tracks: response });
             $(".chartContent").html(html);
             setTimeout(function() {
                 window.tracks = $(".track").toArray().reverse();
-                window.currentVideoPlayer = 1;
-                window.currentVideoIndex = 0;
-                initializeEvents();
             }, 0);
         },
         error: function(request, error) {
@@ -282,4 +283,122 @@ function processVideoUrl(url, full = false)
     else
         returnedUrl = returnedUrl.replace("?t=", "?xxx=");
     return returnedUrl + '&autoplay=1';
+}
+
+function getDataUrl()
+{
+    var day = getChartDate();
+    var mm = day.getMonth() + 1; // getMonth() is zero-based
+    var dd = day.getDate();
+    var strDate = [day.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+         ].join('-');
+
+    return "../data/" + strDate + ".json";
+}
+
+function displayWeekDescription() 
+{
+    var day = getChartDate();
+    var mm = day.getMonth() + 1; // getMonth() is zero-based
+    var dd = day.getDate();
+    var strDate = [(dd>9 ? '' : '0') + dd,
+          (mm>9 ? '' : '0') + mm,
+          day.getFullYear()
+         ].join('/');
+
+    var weekNumber = getWeekNumber(day);
+
+    var weekDescriptionHtml = "";
+
+    if (day >= new Date(2017, 6, 4)) {
+        weekDescriptionHtml += "<span class='previousWeek'><a href='javascript:goToPreviousWeek()'><<</a></span>"
+    }
+    weekDescriptionHtml += "<span class='weekNumber'>Week " + weekNumber + " (" + strDate + ")</span>"
+    if (day + 6 <= getToday()) {
+        weekDescriptionHtml += "<span class='nextWeek'><a href='javascript:goToNextWeek()'>>></a></span>"
+    }
+
+    $(".weekDescription").html(weekDescriptionHtml);
+}
+
+function getChartDate()
+{
+    var day = getToday();
+    if (getUrlVars()["date"] != null) {
+        day = new Date(getUrlVars()["date"])
+    }
+    while (day.getDay() != 6) {
+        day = day.addDays(-1);
+    }
+    return day;
+}
+
+function getWeekNumber(d) 
+{
+    // Copy date so don't modify original
+    d = new Date(+d);
+    d.setHours(0,0,0,0);
+    // Set to nearest Thursday: current date + 4 - current day number
+    // Make Sunday's day number 7
+    d.setDate(d.getDate() + 4 - (d.getDay()||7));
+    // Get first day of year
+    var yearStart = new Date(d.getFullYear(),0,1);
+    // Calculate full weeks to nearest Thursday
+    var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+    // Return array of year and week number
+    return weekNo;
+}
+
+function goToPreviousWeek()
+{
+    var day = getChartDate().addDays(-7);
+    var mm = day.getMonth() + 1; // getMonth() is zero-based
+    var dd = day.getDate();
+    var strDate = [day.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+         ].join('-');
+
+    document.location = document.location.href.substring(0, document.location.href.indexOf('?')) + '?date=' + strDate;
+}
+
+function goToNextWeek()
+{
+    var day = getChartDate().addDays(7);
+    var mm = day.getMonth() + 1; // getMonth() is zero-based
+    var dd = day.getDate();
+    var strDate = [day.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+         ].join('-');
+
+    document.location = document.location.href.substring(0, document.location.href.indexOf('?')) + '?date=' + strDate;
+}
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+function getToday() 
+{
+    var date = new Date()
+    date.setHours(0,0,0,0);
+    return date;
+}
+
+Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
 }

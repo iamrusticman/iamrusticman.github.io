@@ -51,7 +51,7 @@ body {
 }
 
 .weekDescription {
-    margin-top: 52px;
+    margin-top: 54px;
     margin-right: 35px;
     color: #999;
     font-size: 14px;
@@ -517,4 +517,16 @@ html[xmlns] .clearfix {
 
 .contactMail {
     color: #6FA4E1;
+}
+
+.previousWeek a {
+    color: #6FA4E1;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.nextWeek a {
+    color: #6FA4E1;
+    text-decoration: none;
+    margin-left: 15px;
 }
