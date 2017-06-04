@@ -39,6 +39,9 @@ function renderTracksOut()
         success: function(response) {
             var html = template({ tracks: response.slice(50, response.length) });
             $(".tracksOutContent").html(html);
+            setTimeout(function() {
+                window.outTracks = $(".chartContent").find(".track").toArray().reverse();
+            }, 0);
         },
         error: function(request, error) {
             console.log(error);
@@ -80,9 +83,15 @@ function playTrack(index, full = false)
     setTimeout(loadTrack(index, full), 0);
 }
 
+function playOutTrack(index, full = false)
+{
+    window.scrollTo(0, document.body.scrollHeight);
+    setTimeout(loadTrack(index, full, true), 0);
+}
+
 function scrollPage(index)
 {
-    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 220 - 60 * (index + 1) - index);
+    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 180 - 60 * (index + 1) - index - (50 * (60 - index) / 60));
 }
 
 function clearPlayerLabel()
@@ -114,12 +123,12 @@ function scrollPlayer(index)
     }
 }
 
-function loadTrack(index, full = false)
+function loadTrack(index, full = false, out = false)
 {
-    var track = window.tracks[index];
+    var track = out ? window.outTracks[index] : window.tracks[index];
     $(track).addClass("current");
 
-    scrollPlayer(index);
+    if (!out) scrollPlayer(index);
     
     var trackPosition = $(track).find(".trackPosition");
     var number = trackPosition.text();
@@ -153,7 +162,7 @@ function loadTrack(index, full = false)
 
             displayPlayer(index);
 
-            if (full) return;            
+            if (full || out) return;            
             var afterPlayHandler = registerEvent();
             setTimeout(function() { 
                 if (!isActiveEvent(afterPlayHandler)) return;
@@ -203,7 +212,10 @@ function playTrackFromLink(linkElement)
     setPlayerLoading();
     var track = linkElement.parentElement.parentElement;
     var index = window.tracks.indexOf(track);
-    playTrack(index, true);
+    if (index === -1)
+        playOutTrack(index, true);
+    else
+        playTrack(index, true);
 }
 
 function goToPreviousTrack()
