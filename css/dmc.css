@@ -170,7 +170,7 @@ body {
 }
 
 .track.current div.trackCell.trackPosition.down {
-    background-color: #333;
+    background-color: #D15961;
     color: #AAA;
     background-image: url('../images/down.png');
     background-repeat: no-repeat;
@@ -195,7 +195,7 @@ body {
 }
 
 .track.current div.trackCell.trackPosition.eq {
-    background-color: #333;
+    background-color: #ffdb4d;
     color: #AAA;
     background-image: url('../images/eq.png');
     background-repeat: no-repeat;
@@ -220,7 +220,7 @@ body {
 }
 
 .track.current div.trackCell.trackPosition.up {
-    background-color: #333;
+    background-color: #65C485;
     color: #AAA;
     background-image: url('../images/up.png');
     background-repeat: no-repeat;
@@ -245,7 +245,7 @@ body {
 }
 
 .track.current div.trackCell.trackPosition.entry {
-    background-color: #333;
+    background-color: #4db8ff;
     color: #AAA;
     background-image: url('../images/entry.png');
     background-repeat: no-repeat;
