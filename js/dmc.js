@@ -40,7 +40,7 @@ function renderTracksOut()
             var html = template({ tracks: response.slice(50, response.length) });
             $(".tracksOutContent").html(html);
             setTimeout(function() {
-                window.outTracks = $(".chartContent").find(".track").toArray().reverse();
+                window.outTracks = $(".tracksOutContent").find(".track").toArray().reverse();
             }, 0);
         },
         error: function(request, error) {

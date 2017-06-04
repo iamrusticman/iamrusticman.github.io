@@ -325,6 +325,13 @@ div.trackCell.trackPosition.on.entry {
     background-size: 11px 11px;
 }
 
+div.trackCell.trackPosition.on.out {
+    background-image: url('../images/out.png');
+    background-repeat: no-repeat;
+    background-position: 25px 44px;
+    background-size: 11px 11px;
+}
+
 .trackCover {
     width: 60px;
     height: 60px;
