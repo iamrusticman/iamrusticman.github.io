@@ -37,7 +37,7 @@ function renderTracksOut()
         url: dataUrl,
         dataType: "json",
         success: function(response) {
-            var html = template({ tracks: response.slice(0, 49) });
+            var html = template({ tracks: response.slice(50, response.length-1) });
             $(".tracksOutContent").html(html);
         },
         error: function(request, error) {
