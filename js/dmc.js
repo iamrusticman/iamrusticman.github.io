@@ -28,7 +28,7 @@ function renderTracks()
     });
 }
 
-function renderTracks()
+function renderTracksOut()
 {
     var source = $("#tracksOut-template").html();
     var template = Handlebars.compile(source);
