@@ -94,7 +94,7 @@ function playOutTrack(index, full = false)
 
 function scrollPage(index)
 {
-    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 180 - 60 * (index + 1) - index - (100 * (60 - index) / 60));
+    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 180 - 60 * (index + 1) - index - (70 * index / 60));
 }
 
 function clearPlayerLabel()
