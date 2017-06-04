@@ -86,6 +86,9 @@ function playTrack(index, full = false)
 function playOutTrack(index, full = false)
 {
     window.scrollTo(0, document.body.scrollHeight);
+    var playerHeight = ((window.tracks.length - index) * 60) + 70;
+    var playerContainer = $(".playerContainer")[0];
+    playerContainer.style["margin-top"] = playerHeight;
     setTimeout(loadTrack(index, full, true), 0);
 }
 
@@ -322,7 +325,7 @@ function processVideoUrl(url, full = false)
         returnedUrl = returnedUrl.replace("?t=", "?start=");
     else
         returnedUrl = returnedUrl.replace("?t=", "?xxx=");
-    return returnedUrl + '&autoplay=1';
+    return returnedUrl + (returnedUrl.indexOf('?') === -1 ? '?' : '&') + 'autoplay=1';
 }
 
 function getDataUrl()
