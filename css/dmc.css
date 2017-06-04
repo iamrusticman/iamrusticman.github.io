@@ -161,6 +161,8 @@ body {
 
 .trackCell.trackCover.on img {
     display: block;
+    margin-top: 1px;
+    margin-left: 1px;
 }
 
 .trackCell.on {
@@ -339,6 +341,7 @@ div.trackCell.trackPosition.on.entry {
 .trackTitle {
     line-height: 30px;
     font-size: 14px;
+    color: #DDD;
 }
 
 .trackOptions {
@@ -449,16 +452,19 @@ div.trackCell.trackPosition.on.entry {
 }
 
 .playerTitleArtist {
+    padding-top: 1px;
+    padding-bottom: 1px;
     padding-left: 5px;
     float: left;
     width: 420px;
     height: 40px;
-    color: #000;
+    color: #222;
     background-color: #BBB;
 }
 
 .playerTitle {
     font-size: 14px;
+    color: #000;
 }
 
 #videoPlayer2 {
@@ -529,4 +535,8 @@ html[xmlns] .clearfix {
     color: #6FA4E1;
     text-decoration: none;
     margin-left: 15px;
+}
+
+.tracksOutContent {
+    margin-top: 40px;
 }

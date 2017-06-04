@@ -1,6 +1,7 @@
 $(document).ready(function()
 {
     renderTracks();
+    renderTracksOut();
     window.currentVideoPlayer = 1;
     window.currentVideoIndex = 0;
     initializeEvents();
@@ -15,11 +16,29 @@ function renderTracks()
         url: dataUrl,
         dataType: "json",
         success: function(response) {
-            var html = template({ tracks: response });
+            var html = template({ tracks: response.slice(0, 49) });
             $(".chartContent").html(html);
             setTimeout(function() {
                 window.tracks = $(".track").toArray().reverse();
             }, 0);
+        },
+        error: function(request, error) {
+            console.log(error);
+        }
+    });
+}
+
+function renderTracks()
+{
+    var source = $("#tracksOut-template").html();
+    var template = Handlebars.compile(source);
+    var dataUrl = getDataUrl();
+    $.ajax({
+        url: dataUrl,
+        dataType: "json",
+        success: function(response) {
+            var html = template({ tracks: response.slice(0, 49) });
+            $(".tracksOutContent").html(html);
         },
         error: function(request, error) {
             console.log(error);
@@ -38,6 +57,11 @@ function showFullChart()
     $(".trackWeeks").removeClass("off").addClass("on");
 }
 
+function showTracksOut()
+{
+    $(".tracksOutContent").find(".trackOutCell").removeClass("off").addClass("on");
+}
+
 function playThatChart()
 {
     cancelAllEvents();
@@ -45,6 +69,7 @@ function playThatChart()
     clearPlayerLabel();
     pauseCurrentPlayer();
     window.scrollTo(0,document.body.scrollHeight);
+    showTracksOut();
     playTrack(0);
 }
 
@@ -57,7 +82,7 @@ function playTrack(index, full = false)
 
 function scrollPage(index)
 {
-    window.scrollTo(0,document.body.scrollHeight - 180 - 60 * (index + 1));
+    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 220 - 60 * (index + 1) - index);
 }
 
 function clearPlayerLabel()

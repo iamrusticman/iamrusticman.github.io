@@ -10,15 +10,31 @@
             {{#each tracks}}
                 <div class="track" data-videourl="{{videoUrl}}" data-videoduration="{{videoDuration}}">
                     <div class="trackCell trackPosition off {{direction}}">{{position}}</div>
+                    <div class="trackCell trackLast off">{{last}}</div>
                     <div class="trackCell trackCover off"><img class="trackCoverImage" src="{{coverImage}}"></div>
                     <div class="trackCell trackArtistTitle off">
                         <div class="trackArtist">{{artist}}</div>
                         <div class="trackTitle">{{title}}</div>
                     </div>
                     <div class="trackCell trackOptions off"><a onclick="playTrackFromLink(this)">></a></div>
-                    <div class="trackCell trackLast off">{{last}}</div>
                     <div class="trackCell trackPeak off">{{peak}}</div>
                     <div class="trackCell trackWeeks off">{{weeks}}</div>
+                </div>
+            {{/each}}
+        </script>
+        <script id="tracksOut-template" type="text/x-handlebars-template">
+            {{#each tracks}}
+                <div class="track" data-videourl="{{videoUrl}}" data-videoduration="{{videoDuration}}">
+                    <div class="trackOutCell trackPosition off {{direction}}">{{position}}</div>
+                    <div class="trackOutCell trackLast off">{{last}}</div>
+                    <div class="trackOutCell trackCover off"><img class="trackCoverImage" src="{{coverImage}}"></div>
+                    <div class="trackOutCell trackArtistTitle off">
+                        <div class="trackArtist">{{artist}}</div>
+                        <div class="trackTitle">{{title}}</div>
+                    </div>
+                    <div class="trackOutCell trackOptions off"><a onclick="playTrackFromLink(this)">></a></div>
+                    <div class="trackOutCell trackPeak off">{{peak}}</div>
+                    <div class="trackOutCell trackWeeks off">{{weeks}}</div>
                 </div>
             {{/each}}
         </script>
@@ -33,7 +49,7 @@
                     <div class="mainDescription"><h2>The worldwide <span class="highlight">dance</span> music chart</h2></div>
                 </div>
             </div>
-            <div class="mainBody">The chart is intentionally hidden. Do you want to discover the tracks one by one, bottom to top?</div>
+            <div class="mainBody">The chart is intentionally hidden. Do you want to discover the tracks one by one, from bottom to top?</div>
             <div class="menu clearfix">
                 <a class="menuOption playChart" href="javascript:playThatChart()">Play that chart!</a>
                 <a class="menuOption showChart" href="javascript:showFullChart()">Show full chart</a>
@@ -42,14 +58,16 @@
                 <div class="chartContainer">
                     <div class="chartHeader">
                         <div class="columnHeader positionHeader">Number</div>
+                        <div class="columnHeader lastHeader">Last</div>
                         <div class="columnHeader coverHeader">&nbsp;</div>
                         <div class="columnHeader artistTitleHeader">Artist / Title</div>
                         <div class="columnHeader optionsHeader"></div>
-                        <div class="columnHeader lastHeader">Last</div>
                         <div class="columnHeader peakHeader">Peak</div>
                         <div class="columnHeader weeksHeader">Wks</div>
                     </div>
                     <div class="chartContent">
+                    </div>
+                    <div class="tracksOutContent">
                     </div>
                 </div>
                 <div class="playerContainer">
