@@ -115,7 +115,7 @@ function displayPlayer(index)
 
 function scrollPlayer(index)
 {
-    var playerHeight = ((window.tracks.length - index) * 60) + 70;
+    var playerHeight = ((window.tracks.length - index) * 60) + 80;
     var playerContainer = $(".playerContainer")[0];
     playerContainer.style["margin-top"] = playerHeight;
     if (document.body.scrollHeight < playerHeight + 300) {
