@@ -538,7 +538,7 @@ html[xmlns] .clearfix {
 
 .outThisWeek {
     color: #777;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .contactUs {
@@ -564,5 +564,5 @@ html[xmlns] .clearfix {
 }
 
 .tracksOutContent {
-    margin-top: 40px;
+    margin-top: 10px;
 }
