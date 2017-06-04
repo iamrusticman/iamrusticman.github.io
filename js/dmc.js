@@ -16,10 +16,10 @@ function renderTracks()
         url: dataUrl,
         dataType: "json",
         success: function(response) {
-            var html = template({ tracks: response.slice(0, 49) });
+            var html = template({ tracks: response.slice(0, 50) });
             $(".chartContent").html(html);
             setTimeout(function() {
-                window.tracks = $(".track").toArray().reverse();
+                window.tracks = $(".chartContent").find(".track").toArray().reverse();
             }, 0);
         },
         error: function(request, error) {
@@ -37,7 +37,7 @@ function renderTracksOut()
         url: dataUrl,
         dataType: "json",
         success: function(response) {
-            var html = template({ tracks: response.slice(50, response.length-1) });
+            var html = template({ tracks: response.slice(50, response.length) });
             $(".tracksOutContent").html(html);
         },
         error: function(request, error) {
