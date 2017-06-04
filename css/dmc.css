@@ -425,13 +425,13 @@ div.trackOutCell.trackPosition.on.out {
     z-index: 900;
     background-color: #000;
     width: 464px;
-    height: 42px;    
+    height: 43px;    
 }
 
 .playerPosition {
     float: left;
     width: 40px;
-    line-height: 42px;
+    line-height: 43px;
     text-align: center;
     color: #000;
     font-size: 24px;

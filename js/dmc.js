@@ -94,7 +94,7 @@ function playOutTrack(index, full = false)
 
 function scrollPage(index)
 {
-    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 180 - 60 * (index + 1) - index - (50 * (60 - index) / 60));
+    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 180 - 60 * (index + 1) - index - (70 * (60 - index) / 60));
 }
 
 function clearPlayerLabel()
@@ -115,7 +115,7 @@ function displayPlayer(index)
 
 function scrollPlayer(index)
 {
-    var playerHeight = ((window.tracks.length - index) * 60) + 25;
+    var playerHeight = ((window.tracks.length - index) * 60) + 70;
     var playerContainer = $(".playerContainer")[0];
     playerContainer.style["margin-top"] = playerHeight;
     if (document.body.scrollHeight < playerHeight + 300) {
