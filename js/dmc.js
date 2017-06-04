@@ -92,7 +92,7 @@ function playOutTrack(index, full)
     window.scrollTo(0, document.body.scrollHeight);
     var playerHeight = ((window.tracks.length - index) * 60) + 70;
     var playerContainer = $(".playerContainer")[0];
-    playerContainer.style["margin-top"] = playerHeight;
+    playerContainer.style.marginTop = playerHeight.toString() + "px";
     setTimeout(loadTrack(index, full, true), 0);
 }
 
@@ -121,7 +121,7 @@ function scrollPlayer(index)
 {
     var playerHeight = ((window.tracks.length - index) * 60) + 80;
     var playerContainer = $(".playerContainer")[0];
-    playerContainer.style["margin-top"] = playerHeight;
+    playerContainer.style.marginTop = playerHeight.toString() + "px";
     if (document.body.scrollHeight < playerHeight + 300) {
         window.scrollTo(0,document.body.scrollHeight);
     }
@@ -328,7 +328,7 @@ function hasClass(element, cls)
 function processVideoUrl(url, full)
 {
     full = typeof full !== 'undefined' ? full : false;
-    
+
     var returnedUrl = url.replace("https://youtu.be/", "https://www.youtube.com/embed/")
     if (!full)
         returnedUrl = returnedUrl.replace("?t=", "?start=");
