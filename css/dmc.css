@@ -536,6 +536,11 @@ html[xmlns] .clearfix {
     float: left;
 }
 
+.outThisWeek {
+    color: #777;
+    margin-bottom: 10px;
+}
+
 .contactUs {
     color: #777;
     margin-top: 40px;
