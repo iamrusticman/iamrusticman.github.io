@@ -76,15 +76,19 @@ function playThatChart()
     playTrack(0);
 }
 
-function playTrack(index, full = false)
+function playTrack(index, full)
 {
+    full = typeof full !== 'undefined' ? full : false;
+
     window.currentVideoIndex = index;
     scrollPage(index);
     setTimeout(loadTrack(index, full), 0);
 }
 
-function playOutTrack(index, full = false)
+function playOutTrack(index, full)
 {
+    full = typeof full !== 'undefined' ? full : false;
+
     window.scrollTo(0, document.body.scrollHeight);
     var playerHeight = ((window.tracks.length - index) * 60) + 70;
     var playerContainer = $(".playerContainer")[0];
@@ -126,8 +130,11 @@ function scrollPlayer(index)
     }
 }
 
-function loadTrack(index, full = false, out = false)
+function loadTrack(index, full, out)
 {
+    full = typeof full !== 'undefined' ? full : false;
+    out = typeof out !== 'undefined' ? out : false;
+    
     var track = out ? window.outTracks[index] : window.tracks[index];
     $(track).addClass("current");
 
@@ -318,8 +325,10 @@ function hasClass(element, cls)
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
 
-function processVideoUrl(url, full = false)
+function processVideoUrl(url, full)
 {
+    full = typeof full !== 'undefined' ? full : false;
+    
     var returnedUrl = url.replace("https://youtu.be/", "https://www.youtube.com/embed/")
     if (!full)
         returnedUrl = returnedUrl.replace("?t=", "?start=");
