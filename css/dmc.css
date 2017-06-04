@@ -146,20 +146,20 @@ body {
     color: #BBB;
 }
 
-.trackCell {
+.trackCell, .trackOutCell {
     float: left;
     border: 1px solid #333;
 }
 
-.trackCell.off {
+.trackCell.off, .trackOutCell.off {
     color: #000;
 }
 
-.trackCell.trackCover.off img {
+.trackCell.trackCover.off img, .trackOutCell.trackCover.off img {
     display: none;
 }
 
-.trackCell.trackCover.on img {
+.trackCell.trackCover.on img, .trackOutCell.trackCover.on img {
     display: block;
     margin-top: 1px;
     margin-left: 1px;
@@ -273,9 +273,17 @@ body {
     color: #555;
 }
 
+.trackOutCell.trackPosition.off {
+    color: #000;
+}
+
 .trackCell.trackPosition.on {
     color: #333;
     background-color: #BBB;
+}
+
+.trackOutCell.trackPosition.on {
+    color: #BBB;
 }
 
 .trackPosition {
@@ -330,7 +338,7 @@ div.trackCell.trackPosition.on.entry {
     height: 60px;
 }
 
-.trackCell.trackArtistTitle {
+.trackCell.trackArtistTitle, .trackOutCell.trackArtistTitle {
     border-right: none;
 }
 
@@ -341,6 +349,9 @@ div.trackCell.trackPosition.on.entry {
 .trackTitle {
     line-height: 30px;
     font-size: 14px;
+}
+
+.trackArtist.on {
     color: #DDD;
 }
 
@@ -350,7 +361,7 @@ div.trackCell.trackPosition.on.entry {
     text-align: center;
 }
 
-.trackCell.trackOptions {
+.trackCell.trackOptions, .trackOutCell.trackOptions {
     border-left: none;
 }
 
@@ -462,9 +473,12 @@ div.trackCell.trackPosition.on.entry {
     background-color: #BBB;
 }
 
+.playerArtist {
+    color: #000;
+}
+
 .playerTitle {
     font-size: 14px;
-    color: #000;
 }
 
 #videoPlayer2 {
