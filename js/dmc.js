@@ -94,7 +94,7 @@ function playOutTrack(index, full = false)
 
 function scrollPage(index)
 {
-    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 180 - 60 * (index + 1) - index - (70 * index / 60));
+    window.scrollTo(0,document.body.scrollHeight - $(".tracksOutContent")[0].clientHeight - 200 - 60 * (index + 1) - index - (70 * index / 60));
 }
 
 function clearPlayerLabel()
@@ -323,8 +323,10 @@ function processVideoUrl(url, full = false)
     var returnedUrl = url.replace("https://youtu.be/", "https://www.youtube.com/embed/")
     if (!full)
         returnedUrl = returnedUrl.replace("?t=", "?start=");
-    else
+    else {
         returnedUrl = returnedUrl.replace("?t=", "?xxx=");
+        returnedUrl = returnedUrl.replace("?start=", "?xxx=");
+    }
     return returnedUrl + (returnedUrl.indexOf('?') === -1 ? '?' : '&') + 'autoplay=1';
 }
 
