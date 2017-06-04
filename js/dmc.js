@@ -212,10 +212,13 @@ function playTrackFromLink(linkElement)
     setPlayerLoading();
     var track = linkElement.parentElement.parentElement;
     var index = window.tracks.indexOf(track);
-    if (index === -1)
+    if (index === -1) {
+        index = window.outTracks.indexOf(track);
         playOutTrack(index, true);
-    else
+    }
+    else {
         playTrack(index, true);
+    }
 }
 
 function goToPreviousTrack()
