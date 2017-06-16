@@ -4,13 +4,16 @@ $(document).ready(function()
     renderTracksOut();
     window.currentVideoPlayer = 1;
     window.currentVideoIndex = 0;
+    window.isPrintableChart = false;
     initializeEvents();
 });
 
 function renderTracks()
 {
     var source = $("#tracks-template").html();
+    var printSource = $("#tracks-printTemplate").html();
     var template = Handlebars.compile(source);
+    var printTemplate = Handlebars.compile(printSource);
     var dataUrl = getDataUrl();
     $.ajax({
         url: dataUrl,
@@ -18,6 +21,8 @@ function renderTracks()
         success: function(response) {
             var html = template({ tracks: response.slice(0, 50) });
             $(".chartContent").html(html);
+            var printHtml = printTemplate({ tracks: response.slice(0, 50) });
+            $(".chartPrintTable").html($(".chartPrintTable").html() + printHtml);
             setTimeout(function() {
                 window.tracks = $(".chartContent").find(".track").toArray().reverse();
             }, 0);
@@ -51,6 +56,8 @@ function renderTracksOut()
 
 function showFullChart()
 {
+    if (window.isPrintableChart) togglePrintChart();
+
     $(".trackPosition").removeClass("off").addClass("on");
     $(".trackArtistTitle").removeClass("off").addClass("on");
     $(".trackCover").removeClass("off").addClass("on");
@@ -67,6 +74,8 @@ function showTracksOut()
 
 function playThatChart()
 {
+    if (window.isPrintableChart) togglePrintChart();
+    
     cancelAllEvents();
     clearCurrentTrack();
     clearPlayerLabel();
@@ -451,8 +460,27 @@ function getToday()
     return date;
 }
 
-Date.prototype.addDays = function(days) {
+Date.prototype.addDays = function(days) 
+{
     var dat = new Date(this.valueOf());
     dat.setDate(dat.getDate() + days);
     return dat;
+}
+
+function togglePrintChart()
+{
+    window.isPrintableChart = !window.isPrintableChart;
+    $('.chartContainer')[0].style.display = window.isPrintableChart ? 'none' : 'block';
+    $('.playerContainer')[0].style.display = window.isPrintableChart ? 'none' : 'block';
+    $('.chartPrintContainer')[0].style.display = window.isPrintableChart ? 'block' : 'none';
+    if (window.isPrintableChart) {
+        $('.menu').removeClass('clearfix');
+        $('.mainContent').removeClass('clearfix');
+        $('.togglePrintChart').text('Video version');
+    }
+    else {
+        $('.menu').addClass('clearfix');
+        $('.mainContent').addClass('clearfix');
+        $('.togglePrintChart').text('Printable version');
+    }
 }

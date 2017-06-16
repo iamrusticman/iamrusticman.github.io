@@ -34,6 +34,19 @@
                 </div>
             {{/each}}
         </script>
+        <script id="tracks-printTemplate" type="text/x-handlebars-template">
+            {{#each tracks}}
+                <tr>
+                    <td>{{position}}</td>
+                    <td>{{direction}}</td>
+                    <td>{{last}}</td>
+                    <td>{{artist}}</td>
+                    <td>{{title}}</td>
+                    <td>{{peak}}</td>
+                    <td>{{weeks}}</td>
+                </div>
+            {{/each}}
+        </script>
         <script id="tracksOut-template" type="text/x-handlebars-template">
             {{#each tracks}}
                 <div class="track" data-videourl="{{videoUrl}}" data-videoduration="{{videoDuration}}">
@@ -65,6 +78,7 @@
             <div class="menu clearfix">
                 <a class="menuOption playChart" href="javascript:playThatChart()">Play that chart!</a>
                 <a class="menuOption showChart" href="javascript:showFullChart()">Show full chart</a>
+                <a class="menuOption togglePrintChart" href="javascript:togglePrintChart()">Printable version</a>
             </div>
             <div class="mainContent clearfix">
                 <div class="chartContainer">
@@ -100,6 +114,19 @@
                     </div>
                     <div class="playerLabelContainer">
                     </div>
+                </div>
+                <div class="chartPrintContainer">
+                    <table class="chartPrintTable">
+                        <tr>
+                            <th>Num</th>
+                            <th>&nbsp;</th>
+                            <th>Last</th>
+                            <th>Artist</th>
+                            <th>Title</th>
+                            <th>Peak</th>
+                            <th>Wks</th>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
