@@ -366,11 +366,11 @@ function displayWeekDescription()
 
     var weekDescriptionHtml = "";
 
-    if (day >= new Date(2017, 6, 4)) {
+    if (day >= new Date(2017, 5, 4)) {
         weekDescriptionHtml += "<span class='previousWeek'><a href='javascript:goToPreviousWeek()'><<</a></span>"
     }
     weekDescriptionHtml += "<span class='weekNumber'>Week " + weekNumber + " (" + strDate + ")</span>"
-    if (day + 6 <= getToday()) {
+    if (day.addDays(7) <= getToday()) {
         weekDescriptionHtml += "<span class='nextWeek'><a href='javascript:goToNextWeek()'>>></a></span>"
     }
 
