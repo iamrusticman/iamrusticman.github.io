@@ -520,8 +520,8 @@ html[xmlns] .clearfix {
 }
 
 .playerControls {
-    width: 100%;
-    padding-left: 175px;
+    width: 260px;
+    padding-left: 180px;
     padding-top: 3px;
     padding-bottom: 3px;
 }
@@ -568,7 +568,6 @@ html[xmlns] .clearfix {
 }
 
 .togglePrintChart {
-    display: none;
     font-size: 14px;
     color: #999;
 }
@@ -588,4 +587,11 @@ html[xmlns] .clearfix {
 .chartPrintTable th, .chartPrintTable td {
     text-align: left;
     padding-left: 5px;
+}
+
+.twitter img {
+    border: 0px;
+    width: 15px;
+    vertical-align: middle;
+    margin-bottom: 2px;
 }

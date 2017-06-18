@@ -17,6 +17,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/dmc.js"></script>
         <script id="tracks-template" type="text/x-handlebars-template">
             {{#each tracks}}
@@ -79,6 +80,8 @@
                 <a class="menuOption playChart" href="javascript:playThatChart()">Play that chart!</a>
                 <a class="menuOption showChart" href="javascript:showFullChart()">Show full chart</a>
                 <a class="menuOption togglePrintChart" href="javascript:togglePrintChart()">Printable version</a>
+                <a class="menuOption twitter" href="http://twitter.com/playthatdance"><img src="images/twitter.png"></a>
+                <a class="menuOption" href="javascript:playAPI()">Play</a>
             </div>
             <div class="mainContent clearfix">
                 <div class="chartContainer">
@@ -98,6 +101,15 @@
                     </div>
                 </div>
                 <div class="playerContainer">
+                    <div id="ytplayer">
+                        You need Flash player 8+ and JavaScript enabled to view this video.
+                    </div>
+                    <script type="text/javascript">
+                        var params = { allowScriptAccess: "always" };
+                        var atts = { id: "myytplayer" };
+                        swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&playerapiid=ytplayer&version=3",
+                                        "ytapiplayer", "425", "356", "8", null, null, params, atts);
+                    </script>
                     <iframe id="videoPlayer1" width="460" height="290" src="" frameborder="0" allowfullscreen></iframe>
                     <iframe id="videoPlayer2" width="460" height="290" src="" frameborder="0" allowfullscreen></iframe>
                     <div class="playerControls">

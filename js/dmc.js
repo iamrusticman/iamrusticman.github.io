@@ -484,3 +484,21 @@ function togglePrintChart()
         $('.togglePrintChart').text('Printable version');
     }
 }
+
+function onYouTubePlayerReady(playerId) 
+{
+    window.ytplayer = document.getElementById("ytplayer");
+    window.ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
+}
+
+function playAPI() 
+{
+    if (window.ytplayer) {
+        ytplayer.cueVideoByUrl({ mediaContentUrl: 'https://youtu.be/qPTfXwPf_HM', startSeconds: 100 });
+        //ytplayer.playVideo();
+    }
+}
+
+function onytplayerStateChange(newState) {
+   console.log("Player's new state: " + newState);
+}
