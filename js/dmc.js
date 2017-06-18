@@ -494,7 +494,7 @@ function onYouTubePlayerReady(playerId)
 function playAPI() 
 {
     if (window.ytplayer) {
-        ytplayer.cueVideoByUrl({ mediaContentUrl: 'https://youtu.be/qPTfXwPf_HM', startSeconds: 100 });
+        window.ytplayer.cueVideoByUrl({ mediaContentUrl: 'https://youtu.be/qPTfXwPf_HM', startSeconds: 100 });
         //ytplayer.playVideo();
     }
 }
